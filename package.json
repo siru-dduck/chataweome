@@ -1,0 +1,38 @@
+{
+  "name": "chatawesome",
+  "version": "1.0.0",
+  "description": "nodejs와 socket.io를 이용한 웹 기반 채팅어플리케이션",
+  "main": "index.js",
+  "scripts": {
+    "dev:server": "nodemon --exec babel-node app.js",
+    "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
+    "build:assets": "cross-env WEBPACK_ENV=production webpack"
+  },
+  "author": "shinwoo",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.8.7",
+    "autoprefixer": "^9.7.5",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "css-loader": "^3.4.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "helmet": "^3.22.0",
+    "morgan": "^1.10.0",
+    "node-sass": "^4.13.1",
+    "postcss-loader": "^3.0.0",
+    "pug": "^2.0.4",
+    "sass-loader": "^8.0.2",
+    "socket.io": "^2.3.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.0",
+    "nodemon": "^2.0.2"
+  }
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+html(lang="ko")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet", href="/static/styles.css")
+        script(src="https://kit.fontawesome.com/031722a6cc.js", crossorigin="anonymous")
+        title ChatAwesome
+    body
+        nav.nav
+            a(href="/")
+                .logoBox
+                    span.logoBox__icon
+                        i.fas.fa-comment-dots
+                    span.logoBox__title ChatAwesome
+        main
+            .loginBox
+                form.nickname-form
+                    input(type="text" name="nickname" placeholder="사용할 닉네임을 적어주세요.")
+            .chatBox.hidden
+                form.chat-form
+                    textarea(name="chatContent", cols="30", rows="10") 내용을 입력하세요. 
+                    button 전송
+        script(src="/socket.io/socket.io.js")
+        script(src="/static/main.js") 

@@ -1,0 +1,13 @@
+.loginBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.nickname-form > input[name="nickname"] {
+  width: 212px;
+  padding: 12px 15px;
+  border-radius: 15px;
+  border: 1px solid $borderColor;
+}
