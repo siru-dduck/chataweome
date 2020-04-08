@@ -13,5 +13,4 @@ const socketController = (socket, io) => {
   });
 };
 
-setInterval(() => console.log(sockets), 3000);
 export default socketController;

@@ -8,11 +8,27 @@ body {
   background-color: $bgColor;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__row {
+  display: flex;
+  justify-content: center;
+}
+
+input,
+textarea,
+button {
+  outline: none;
+}
+
 .nav {
   display: flex;
   justify-content: space-between;
   height: 72px;
-  padding: 10px 25px;
+  padding: 12px 36px;
   background-color: $navColor;
   border-bottom: 1px solid $borderColor;
 }
@@ -35,4 +51,11 @@ body {
 
 .hidden {
   display: none;
+}
+
+.footer {
+  border-top: 1px solid $borderColor;
+  padding-top: 24px;
+  text-align: center;
+  height: 192px;
 }

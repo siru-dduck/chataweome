@@ -15,7 +15,7 @@ app.use(logger("dev"));
 app.use("/static", express.static("static"));
 
 app.get("/", (_, res) => {
-  res.render("home", { author: "Choi Shin Woo" });
+  res.render("home");
 });
 
 const server = app.listen(process.env.PORT, () => {
