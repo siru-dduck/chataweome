@@ -36,7 +36,17 @@
     width: 100%;
     padding: 8px 12px;
     background-color: $chatroomColor;
-
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 14px;
+    }
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #a4b0be;
+      border-radius: 6px;
+    }
     .chatList {
       display: flex;
       align-items: flex-start;
@@ -60,9 +70,11 @@
 
     .chatList.self {
       flex-direction: row-reverse;
-      .chat_msg {
-        background-color: $mainColor;
+      .chatList__column {
         margin-left: 10px;
+        .chat_msg {
+          background-color: $mainColor;
+        }
       }
     }
     .chatList.other {
@@ -80,14 +92,13 @@
       .chatList__column {
         display: flex;
         flex-direction: column;
+        margin-right: 10px;
         span.nickname {
           margin-bottom: 8px;
           font-size: 14px;
         }
-
         .chat_msg {
           background-color: white;
-          margin-right: 10px;
         }
       }
     }
@@ -150,6 +161,25 @@
             &:hover {
               opacity: 0.65;
             }
+          }
+        }
+        input[type="range"] {
+          -webkit-appearance: none;
+          width: 62px;
+          height: 12px;
+          margin: 0px;
+          &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            border: 1px solid lightgray;
+            width: 12px;
+            height: 12px;
+            border-radius: 6px;
+            margin-top: -7px;
+            background-color: white;
+          }
+          &::-webkit-slider-runnable-track {
+            height: 1.1px;
+            background-color: lightgray;
           }
         }
       }

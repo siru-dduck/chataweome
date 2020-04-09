@@ -34,6 +34,14 @@ html(lang="ko")
                             .chatList__column
                                 .chat_msg Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ducimus cumque! Velit recusandae eum ullam pariatur provident laborum beatae explicabo doloremque vitae, eius hic dignissimos quas, repellat porro alias obcaecati?
                             span.sendTime 오후 6:55
+                        li.chatList.other
+                            .avatar-icon
+                                span 
+                                    i.fas.fa-user
+                            .chatList__column
+                                span.nickname 유진떡
+                                .chat_msg Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam, ducimus cumque! Velit recusandae eum ullam pariatur provident laborum beatae explicabo doloremque vitae, eius hic dignissimos quas, repellat porro alias obcaecati?
+                            span.sendTime 오후 6:55
                     .chatBox__inputContainer
                         form.chatBox__form
                             textarea(name="chatContent" placeholder="내용을 입력하세요.")
@@ -45,7 +53,7 @@ html(lang="ko")
                                 span
                                     i.fas.fa-paperclip    
                             .chatFunctions__column
-                                input(type="range")
+                                input(type="range" min=0.1 max=1 step=0.1 value=1)
         footer.footer  Copyright © #{new Date().getFullYear()} ChatAwesome
         script(src="/socket.io/socket.io.js")
         script(src="/static/main.js") 
