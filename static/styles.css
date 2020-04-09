@@ -206,19 +206,48 @@ button {
   display: flex;
   flex-direction: column;
   border: 1px solid rgba(var(--b6a, 219, 219, 219), 1);
-  border-radius: 6px; }
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden; }
+  .chatBox .chatBox__notifyMsg {
+    position: absolute;
+    top: 0px;
+    left: auto;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 12px;
+    background-color: #80cbc4;
+    color: white;
+    font-weight: 500;
+    -webkit-animation: notification 0.75s ease-in-out forwards;
+            animation: notification 0.75s ease-in-out forwards; }
+
+@-webkit-keyframes notification {
+  from {
+    transform: translateY(-28px); }
+  to {
+    transform: translateY(52px); } }
+
+@keyframes notification {
+  from {
+    transform: translateY(-28px); }
+  to {
+    transform: translateY(52px); } }
   .chatBox .chatBox__header {
     width: 100%;
     padding: 12px 18px;
-    background: #abc0d1;
+    background: #9eb4c7;
     color: #333;
     font-weight: 700;
     font-size: 20px;
     border-radius: 5px 5px 0 0; }
+    .chatBox .chatBox__header span.userNum {
+      font-size: 15px;
+      margin-left: 8px; }
   .chatBox .chatBox__contents {
     height: 442px;
     width: 100%;
-    padding: 8px 12px;
+    padding: 22px 12px 0;
     background-color: #abc0d1;
     overflow-y: scroll; }
     .chatBox .chatBox__contents::-webkit-scrollbar {

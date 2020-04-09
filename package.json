@@ -4,6 +4,7 @@
   "description": "nodejs와 socket.io를 이용한 웹 기반 채팅어플리케이션",
   "main": "index.js",
   "scripts": {
+    "start": "babel-node app.js",
     "dev:server": "nodemon --exec babel-node app.js",
     "dev:assets": "cross-env WEBPACK_ENV=development webpack -w",
     "build:assets": "cross-env WEBPACK_ENV=production webpack"

@@ -86,6 +86,29 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./assets/js/chat.js":
+/*!***************************!*\
+  !*** ./assets/js/chat.js ***!
+  \***************************/
+/*! exports provided: handleNewMsg */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleNewMsg\", function() { return handleNewMsg; });\n/* harmony import */ var _socket__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./socket */ \"./assets/js/socket.js\");\n\nvar chatList = document.querySelector(\"ul.chatBox__contents\");\nvar chatForm = document.querySelector(\"form.chatBox__form\");\nvar chatText = document.querySelector(\"textarea[name='chatContent']\");\n\nvar appendMsg = function appendMsg(_ref) {\n  var nickname = _ref.nickname,\n      message = _ref.message;\n  var li = document.createElement(\"li\");\n  li.classList.add(\"chatList\", nickname ? \"other\" : \"self\");\n  li.innerHTML = \"\\n    \".concat(nickname ? '<div class=\"avatar-icon\"><span><i class=\"fas fa-user\"></i></span></div>' : \"\", \"\\n    <div class=\\\"chatList__column\\\">\").concat(nickname ? \"<span class=\\\"nickname\\\">\".concat(nickname, \"</span>\") : \"\", \"<div class=\\\"chat_msg\\\">\").concat(message, \"</div></div>\\n    <span class=\\\"sendTime\\\">\\uC624\\uD6C4 1:05</span>\\n  \");\n  chatList.append(li);\n};\n\nvar handleChatSubmit = function handleChatSubmit(event) {\n  event.preventDefault();\n  var message = chatText.value;\n  if (!message || message.length === 0) return;\n  Object(_socket__WEBPACK_IMPORTED_MODULE_0__[\"getSocket\"])().emit(\"sendMsg\", {\n    message: message\n  });\n  chatText.value = \"\";\n  appendMsg({\n    message: message\n  });\n};\n\nvar handleNewMsg = function handleNewMsg(_ref2) {\n  var nickname = _ref2.nickname,\n      message = _ref2.message;\n  appendMsg({\n    nickname: nickname,\n    message: message\n  });\n};\n\nif (chatForm) {\n  chatForm.addEventListener(\"submit\", handleChatSubmit);\n}\n\n//# sourceURL=webpack:///./assets/js/chat.js?");
+
+/***/ }),
+
+/***/ "./assets/js/function.js":
+/*!*******************************!*\
+  !*** ./assets/js/function.js ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var chatBox = document.querySelector(\".chatBox\");\nvar opacityRange = document.querySelector(\".chatFunctions__column > input[type='range']\");\n\nvar handleDragOpacity = function handleDragOpacity(event) {\n  var target = event.target;\n  chatBox.style = \"opacity:\".concat(target.value);\n};\n\nif (opacityRange) {\n  opacityRange.addEventListener(\"input\", handleDragOpacity);\n}\n\n//# sourceURL=webpack:///./assets/js/function.js?");
+
+/***/ }),
+
 /***/ "./assets/js/login.js":
 /*!****************************!*\
   !*** ./assets/js/login.js ***!
@@ -106,7 +129,19 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _soc
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login */ \"./assets/js/login.js\");\n// scss\n // js\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/styles.scss */ \"./assets/scss/styles.scss\");\n/* harmony import */ var _scss_styles_scss__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_scss_styles_scss__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./login */ \"./assets/js/login.js\");\n/* harmony import */ var _function__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./function */ \"./assets/js/function.js\");\n/* harmony import */ var _function__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_function__WEBPACK_IMPORTED_MODULE_2__);\n// scss\n // js\n\n\n\n\n//# sourceURL=webpack:///./assets/js/main.js?");
+
+/***/ }),
+
+/***/ "./assets/js/notification.js":
+/*!***********************************!*\
+  !*** ./assets/js/notification.js ***!
+  \***********************************/
+/*! exports provided: handleInitChat, handleNewUser, handleDisconnected */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleInitChat\", function() { return handleInitChat; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleNewUser\", function() { return handleNewUser; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"handleDisconnected\", function() { return handleDisconnected; });\nvar chatBox = document.querySelector(\".chatBox\");\nvar userNumBox = document.querySelector(\"span.userNum\");\n\nvar notify = function notify(message) {\n  var msgBox = document.createElement(\"div\");\n  msgBox.classList.add(\"chatBox__notifyMsg\");\n  msgBox.innerText = message;\n  chatBox.append(msgBox);\n  setTimeout(function () {\n    return removeNoifyMsg(msgBox);\n  }, 3000);\n};\n\nvar removeNoifyMsg = function removeNoifyMsg(msgBox) {\n  chatBox.removeChild(msgBox);\n};\n\nvar updateUserNum = function updateUserNum(userNum) {\n  userNumBox.innerText = \"(\".concat(userNum, \")\");\n};\n\nvar handleInitChat = function handleInitChat(_ref) {\n  var userNum = _ref.userNum;\n  updateUserNum(userNum);\n};\nvar handleNewUser = function handleNewUser(_ref2) {\n  var nickname = _ref2.nickname,\n      userNum = _ref2.userNum;\n  if (nickname && nickname.length === 0) return;\n  notify(\"\".concat(nickname, \"\\uB2D8\\uC774 \\uC785\\uC7A5\\uD588\\uC2B5\\uB2C8\\uB2E4.\"));\n  updateUserNum(userNum);\n};\nvar handleDisconnected = function handleDisconnected(_ref3) {\n  var nickname = _ref3.nickname,\n      userNum = _ref3.userNum;\n  if (nickname && nickname.length === 0) return;\n  notify(\"\".concat(nickname, \"\\uB2D8\\uC774 \\uD1F4\\uC7A5\\uD588\\uC2B5\\uB2C8\\uB2E4.\"));\n  updateUserNum(userNum);\n};\n\n//# sourceURL=webpack:///./assets/js/notification.js?");
 
 /***/ }),
 
@@ -118,7 +153,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _scs
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getSocket\", function() { return getSocket; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"initSocket\", function() { return initSocket; });\n// 클라이언트 소켓 선언\n// getSocket 메소드를 통해 접근할것!\nvar socket = null;\nvar getSocket = function getSocket() {\n  return socket;\n};\nvar initSocket = function initSocket(nickname) {\n  socket = io(\"/\");\n  socket.emit(\"setNickname\", {\n    nickname: nickname\n  });\n};\n\n//# sourceURL=webpack:///./assets/js/socket.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"getSocket\", function() { return getSocket; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"initSocket\", function() { return initSocket; });\n/* harmony import */ var _chat__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./chat */ \"./assets/js/chat.js\");\n/* harmony import */ var _notification__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./notification */ \"./assets/js/notification.js\");\n\n // 클라이언트 소켓 선언\n// getSocket 메소드를 통해 접근할것!\n\nvar socket = null;\n\nvar handleDisconnect = function handleDisconnect() {\n  console.log(\"서버와 연결끊김\");\n};\n\nvar getSocket = function getSocket() {\n  return socket;\n};\nvar initSocket = function initSocket(nickname) {\n  socket = io(\"/\");\n  socket.emit(\"setNickname\", {\n    nickname: nickname\n  });\n  socket.on(\"initChat\", _notification__WEBPACK_IMPORTED_MODULE_1__[\"handleInitChat\"]);\n  socket.on(\"newUser\", _notification__WEBPACK_IMPORTED_MODULE_1__[\"handleNewUser\"]);\n  socket.on(\"newMsg\", _chat__WEBPACK_IMPORTED_MODULE_0__[\"handleNewMsg\"]);\n  socket.on(\"disconnected\", _notification__WEBPACK_IMPORTED_MODULE_1__[\"handleDisconnected\"]);\n  socket.on(\"disconnect\", handleDisconnect);\n};\n\n//# sourceURL=webpack:///./assets/js/socket.js?");
 
 /***/ }),
 
