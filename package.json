@@ -22,7 +22,7 @@
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "helmet": "^3.22.0",
     "morgan": "^1.10.0",
-    "node-sass": "^4.13.1",
+    "node-sass": "^7.0.0",
     "postcss-loader": "^3.0.0",
     "pug": "^2.0.4",
     "sass-loader": "^8.0.2",
